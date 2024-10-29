@@ -1,0 +1,258 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: #13151a;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+
+	.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: system-ui, sans-serif;
+    color: white;
+  }
+
+  h1 {
+    text-align: center;
+    color: rgb(var(--accent-light));
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .url-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid rgb(var(--accent));
+    border-radius: 4px;
+    font-size: 16px;
+    background: #1a1b26;
+    color: white;
+  }
+
+  .url-input:focus {
+    outline: none;
+    border-color: rgb(var(--accent-light));
+    box-shadow: 0 0 0 2px rgba(var(--accent-light), 0.2);
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: rgb(var(--accent));
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+  }
+
+  button:hover {
+    background-color: rgb(var(--accent-dark));
+  }
+
+  button:disabled {
+    background-color: rgba(var(--accent), 0.5);
+    cursor: not-allowed;
+  }
+
+  .results {
+    background-color: #1a1b26;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgb(var(--accent));
+  }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .tech-category {
+    background: #22232e;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(var(--accent), 0.2);
+  }
+
+  .tech-category h3 {
+    margin-top: 0;
+    color: rgb(var(--accent-light));
+    border-bottom: 2px solid rgba(var(--accent), 0.3);
+    padding-bottom: 8px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin: 8px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
+    color: #e2e8f0;
+  }
+
+  .versions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-left: auto;
+  }
+
+  .version {
+    background-color: rgba(var(--accent), 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    color: rgb(var(--accent-light));
+  }
+
+  footer {
+    margin-top: 2rem;
+    text-align: center;
+    color: #9ca3af;
+  }
+
+  footer a {
+    color: rgb(var(--accent-light));
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .input-group {
+      flex-direction: column;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+
+  ${existingCss}
+
+  .vulnerabilities {
+    width: 100%;
+    margin-top: 8px;
+    font-size: 0.9em;
+  }
+
+  .vulnerability-indicator {
+    margin-left: 4px;
+  }
+
+  .vulnerability-item {
+    padding: 8px;
+    margin: 8px 0;
+    border-radius: 4px;
+    border-left: 4px solid;
+  }
+
+  .vulnerability-item.critical {
+    background-color: #FEE2E2;
+    border-color: #DC2626;
+  }
+
+  .vulnerability-item.high {
+    background-color: #FEF3C7;
+    border-color: #D97706;
+  }
+
+  .vulnerability-item.medium {
+    background-color: #FEF9C3;
+    border-color: #CA8A04;
+  }
+
+  .vulnerability-item.low {
+    background-color: #ECFCCB;
+    border-color: #65A30D;
+  }
+
+  .vuln-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .vuln-id {
+    font-family: monospace;
+    font-weight: bold;
+  }
+
+  .severity {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+
+  .vuln-description {
+    margin: 4px 0;
+    line-height: 1.4;
+  }
+
+  .vuln-date {
+    font-size: 0.8em;
+    color: #666;
+  }
+</style>
