@@ -93,8 +93,9 @@ export default function GoogleDorksCheatSheet() {
                 À des fins pédagogiques uniquement. Utiliser de manière responsable et éthique.
           </p>
           <p>
-            Pros source on <a href='https://ilimi-tech.com' target="_blank" rel="noopener noreferrer" >ilimiTech</a>
+              <a href='https://ilimi-tech.com' target="_blank" rel="noopener noreferrer" >ilimiTech</a>
           </p>
+          <img src="/logosource.png" alt="logo Entreprise" width="250"/>
         </footer>
       </div>
     );
