@@ -9,6 +9,7 @@ type Dork = {
  
 export default function GoogleDorksCheatSheet() {
     const [searchTerm, setSearchTerm] = useState("");
+    const [searchSite, setSearchSite] = useState("");
     
     const filteredDorks = useMemo(() => {
         const results: { [key: string]: any[] } = {};
@@ -26,8 +27,12 @@ export default function GoogleDorksCheatSheet() {
       return results;
     }, [searchTerm]);
   
-    const executeGoogleDork = (dork: string) => {
+    const executeGoogleDork = (dork: string, site: string) => {
+      if (site === "") {
         window.open(`https://www.google.com/search?q=${encodeURIComponent(dork)}`, '_blank');
+      } else {
+        window.open(`https://www.google.com/search?q=${encodeURIComponent(dork)}+site:${encodeURIComponent(site)}`, '_blank');
+      }
      };
   
     return (
@@ -44,6 +49,17 @@ export default function GoogleDorksCheatSheet() {
             className="search-input"
           />
         </div>
+
+
+        <div className="site-group">
+          <input
+            type="text" 
+            value={searchSite}
+            onChange={(s) => setSearchSite(s.target.value)}
+            placeholder='domain: example.com'
+            className="search-site" 
+          />
+        </div>
   
         <div className="dorks-grid">
           {Object.entries(filteredDorks).map(([category, dorks]) => (
@@ -57,7 +73,7 @@ export default function GoogleDorksCheatSheet() {
                       <div className="dork-description">{dork.description}</div>
                     </div>
                     <button 
-                      onClick={() => executeGoogleDork(dork.dork)}
+                      onClick={() => executeGoogleDork(dork.dork, searchSite)}
                       className="execute-button"
                     >
                       Execute 🔍
@@ -77,7 +93,7 @@ export default function GoogleDorksCheatSheet() {
                 À des fins pédagogiques uniquement. Utiliser de manière responsable et éthique.
           </p>
           <p>
-            View source on <a href='https://ilimi-tech.com' target="_blank" rel="noopener noreferrer" >ilimiTech</a>
+            Pros source on <a href='https://ilimi-tech.com' target="_blank" rel="noopener noreferrer" >ilimiTech</a>
           </p>
         </footer>
       </div>

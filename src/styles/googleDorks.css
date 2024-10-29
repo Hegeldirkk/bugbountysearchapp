@@ -21,6 +21,12 @@
     margin-bottom: 30px;
   }
 
+  .site-group {
+    align-items: center;
+    display: flex;
+
+  }
+
   .search-input {
     width: 100%;
     padding: 12px 20px;
@@ -34,6 +40,21 @@
     outline: none;
     border-color: #4299e1;
   }
+
+  .search-site {
+    width: 20%;
+    padding: 12px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+
+  .search-site:focus {
+    outline: none;
+    border-color: #b73f24;
+  }
+
 
   .dorks-grid {
     display: grid;
@@ -94,7 +115,7 @@
   }
 
   .execute-button {
-    background-color: #4299e1;
+    background-color: #b73f24;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -106,7 +127,7 @@
   }
 
   .execute-button:hover {
-    background-color: #3182ce;
+    background-color: rgb(129, 31, 9);
   }
 
   footer {
