@@ -1,5 +1,3 @@
-import type { APIRoute } from 'astro';
-
 // Google Dorks database from EC-Council
 export const DORKS_DATABASE = {
        

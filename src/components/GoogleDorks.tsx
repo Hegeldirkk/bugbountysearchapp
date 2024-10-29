@@ -1,11 +1,6 @@
 import { useState, useMemo } from 'react';
 import {DORKS_DATABASE}  from './data/dorks';
 
-type Dork = {
-    dork: string;
-    description: string;
- };
-
  
 export default function GoogleDorksCheatSheet() {
     const [searchTerm, setSearchTerm] = useState("");

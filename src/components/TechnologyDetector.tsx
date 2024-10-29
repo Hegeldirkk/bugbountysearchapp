@@ -269,7 +269,7 @@ export function detectCMS(html: string, headers: Record<string, string>) {
     return cms;
   }
   
-export function detectLanguages(html: string, headers: Record<string, string>) {
+export function detectLanguages(headers: Record<string, string>) {
     console.log("Detecting programming languages from headers:", headers);
     const languages = [];
     const poweredBy = headers["x-powered-by"] || "";
@@ -369,7 +369,7 @@ export function detectHosting(headers: Record<string, string>) {
     return hosting;
   }
   
-export function detectPerformance(headers: Record<string, string>, html: string) {
+export function detectPerformance(headers: Record<string, string>) {
     console.log("Detecting performance features from headers:", headers);
     const performance = [];
   
